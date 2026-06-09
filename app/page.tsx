@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getFeaturedProducts, CATEGORIES } from '@/data/products'
+import { getFeaturedSanityProducts } from '@/sanity/lib/products'
 import ProductCard from '@/components/product/ProductCard'
 import styles from './page.module.css'
 
@@ -15,9 +16,9 @@ export const metadata: Metadata = {
 
 // This page is server-rendered for SEO
 // Language switching is handled client-side via CSS data-lang attribute
-export default function HomePage() {
-  const featured = getFeaturedProducts()
-
+export default async function HomePage() {
+  const sanityFeatured = await getFeaturedSanityProducts().catch(() => [])
+  const featured = sanityFeatured.length > 0 ? sanityFeatured : getFeaturedProducts()
   return (
     <>
       {/* ── HERO ── */}
