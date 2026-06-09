@@ -1,0 +1,16 @@
+.card {}
+.imageWrap {}
+
+.imgPrimary {
+  transition: opacity 0.45s ease !important;
+  opacity: 1;
+  z-index: 1;
+}
+.card:hover .imgPrimary { opacity: 0; }
+
+.imgHover {
+  transition: opacity 0.45s ease !important;
+  opacity: 0;
+  z-index: 2;
+}
+.card:hover .imgHover { opacity: 1; }
