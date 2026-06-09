@@ -81,3 +81,26 @@ export async function getFeaturedSanityProducts(): Promise<Product[]> {
     .filter((product) => product.slug?.current)
     .map(mapSanityProductToProduct)
 }
+export async function getSanityProductBySlug(slug: string): Promise<Product | null> {
+  const query = `*[_type == "product" && slug.current == $slug][0] {
+    _id,
+    name,
+    slug,
+    price,
+    category,
+    collection,
+    shortDescription,
+    description,
+    "mainImageUrl": mainImage.asset->url,
+    "galleryUrls": gallery[].asset->url,
+    isFeatured
+  }`
+
+  const product = await client.fetch<SanityProduct | null>(query, { slug })
+
+  if (!product || !product.slug?.current) {
+    return null
+  }
+
+  return mapSanityProductToProduct(product)
+}
