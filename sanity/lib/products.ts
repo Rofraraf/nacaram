@@ -104,3 +104,24 @@ export async function getSanityProductBySlug(slug: string): Promise<Product | nu
 
   return mapSanityProductToProduct(product)
 }
+export async function getNewSanityProducts(): Promise<Product[]> {
+  const query = `*[_type == "product" && isNew == true] | order(_createdAt desc) {
+    _id,
+    name,
+    slug,
+    price,
+    category,
+    collection,
+    shortDescription,
+    description,
+    "mainImageUrl": mainImage.asset->url,
+    "galleryUrls": gallery[].asset->url,
+    isFeatured
+  }`
+
+  const products = await client.fetch<SanityProduct[]>(query)
+
+  return products
+    .filter((product) => product.slug?.current)
+    .map(mapSanityProductToProduct)
+}

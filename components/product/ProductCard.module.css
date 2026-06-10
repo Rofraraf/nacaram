@@ -14,3 +14,66 @@
   z-index: 2;
 }
 .card:hover .imgHover { opacity: 1; }
+
+.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.imgPrimary {
+  transition: opacity 0.45s ease !important;
+  opacity: 1;
+  z-index: 1;
+}
+
+.card:hover .imgPrimary {
+  opacity: 0;
+}
+
+.imgHover {
+  transition: opacity 0.45s ease !important;
+  opacity: 0;
+  z-index: 2;
+}
+
+.card:hover .imgHover {
+  opacity: 1;
+}
+
+.card {
+  display: block;
+}
+
+.imageLink {
+  display: block;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+.textLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.imgPrimary {
+  transition: opacity 0.45s ease !important;
+  opacity: 1;
+  z-index: 1;
+}
+
+.card:hover .imgPrimary {
+  opacity: 0;
+}
+
+.imgHover {
+  transition: opacity 0.45s ease !important;
+  opacity: 0;
+  z-index: 2;
+}
+
+.card:hover .imgHover {
+  opacity: 1;
+}

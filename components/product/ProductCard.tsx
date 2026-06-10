@@ -12,34 +12,42 @@ export default function ProductCard({ product, lang }: ProductCardProps) {
   const name = product.name[lang]
   const overlayText = lang === 'es' ? 'Ver pieza' : 'View piece'
   const hasHover = product.images.length > 1
+  const href = `/producto/${product.slug}`
 
   return (
-    <Link href={`/producto/${product.slug}`} className={`product-card ${styles.card}`}>
-      <div className={`product-card-image ${styles.imageWrap}`}>
-        {/* Primary image */}
+    <article className={`product-card ${styles.card}`}>
+      <Link
+        href={href}
+        className={`product-card-image ${styles.imageLink}`}
+        aria-label={`${overlayText}: ${name}`}
+      >
         <Image
           src={product.images[0]}
           alt={name}
           fill
           sizes="(max-width: 680px) 50vw, 25vw"
-          style={{ objectFit: 'cover' }}
           className={styles.imgPrimary}
+          style={{ objectFit: 'cover' }}
         />
-        {/* Hover image — second photo */}
+
         {hasHover && (
           <Image
             src={product.images[1]}
             alt={`${name} — detalle`}
             fill
             sizes="(max-width: 680px) 50vw, 25vw"
-            style={{ objectFit: 'cover' }}
             className={styles.imgHover}
+            style={{ objectFit: 'cover' }}
           />
         )}
-        <div className="product-card-overlay">{overlayText}</div>
-      </div>
-      <p className="product-card-name">{name}</p>
-      <p className="product-card-price">€{product.price}</p>
-    </Link>
+
+        <span className="product-card-overlay">{overlayText}</span>
+      </Link>
+
+      <Link href={href} className={styles.textLink}>
+        <p className="product-card-name">{name}</p>
+        <p className="product-card-price">€{product.price}</p>
+      </Link>
+    </article>
   )
 }
