@@ -15,9 +15,10 @@ type SanityProduct = {
   mainImageUrl?: string
   galleryUrls?: string[]
   isFeatured?: boolean
+  isNew?: boolean
 }
 
-const featuredProductsQuery = `*[_type == "product" && isFeatured == true] | order(_createdAt desc) {
+const productFields = `
   _id,
   name,
   slug,
@@ -28,8 +29,9 @@ const featuredProductsQuery = `*[_type == "product" && isFeatured == true] | ord
   description,
   "mainImageUrl": mainImage.asset->url,
   "galleryUrls": gallery[].asset->url,
-  isFeatured
-}`
+  isFeatured,
+  isNew
+`
 
 function mapSanityProductToProduct(product: SanityProduct): Product {
   const name = product.name ?? 'Producto NacaRam'
@@ -75,25 +77,32 @@ function mapSanityProductToProduct(product: SanityProduct): Product {
 }
 
 export async function getFeaturedSanityProducts(): Promise<Product[]> {
-  const products = await client.fetch<SanityProduct[]>(featuredProductsQuery)
+  const query = `*[_type == "product" && isFeatured == true] | order(_createdAt desc) {
+    ${productFields}
+  }`
+
+  const products = await client.fetch<SanityProduct[]>(query)
 
   return products
     .filter((product) => product.slug?.current)
     .map(mapSanityProductToProduct)
 }
+
+export async function getNewSanityProducts(): Promise<Product[]> {
+  const query = `*[_type == "product" && isNew == true] | order(_createdAt desc) {
+    ${productFields}
+  }`
+
+  const products = await client.fetch<SanityProduct[]>(query)
+
+  return products
+    .filter((product) => product.slug?.current)
+    .map(mapSanityProductToProduct)
+}
+
 export async function getSanityProductBySlug(slug: string): Promise<Product | null> {
   const query = `*[_type == "product" && slug.current == $slug][0] {
-    _id,
-    name,
-    slug,
-    price,
-    category,
-    collection,
-    shortDescription,
-    description,
-    "mainImageUrl": mainImage.asset->url,
-    "galleryUrls": gallery[].asset->url,
-    isFeatured
+    ${productFields}
   }`
 
   const product = await client.fetch<SanityProduct | null>(query, { slug })
@@ -103,25 +112,4 @@ export async function getSanityProductBySlug(slug: string): Promise<Product | nu
   }
 
   return mapSanityProductToProduct(product)
-}
-export async function getNewSanityProducts(): Promise<Product[]> {
-  const query = `*[_type == "product" && isNew == true] | order(_createdAt desc) {
-    _id,
-    name,
-    slug,
-    price,
-    category,
-    collection,
-    shortDescription,
-    description,
-    "mainImageUrl": mainImage.asset->url,
-    "galleryUrls": gallery[].asset->url,
-    isFeatured
-  }`
-
-  const products = await client.fetch<SanityProduct[]>(query)
-
-  return products
-    .filter((product) => product.slug?.current)
-    .map(mapSanityProductToProduct)
 }
