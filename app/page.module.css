@@ -1,0 +1,131 @@
+/* app/page.module.css */
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 86vh;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.55) 42%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+.heroContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 22px 56px;
+  max-width: 400px;
+}
+
+.heroKicker {
+  margin-bottom: 14px;
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 9vw, 56px);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.heroSub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── SECTIONS ── */
+.sectionTitle {
+  margin-bottom: 4px;
+}
+
+.sectionSub {
+  margin-bottom: 28px;
+}
+
+/* ── CATEGORIES ── */
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.categoryBanner {
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+/* ── EDITORIAL ── */
+.editorialTitle {
+  margin-bottom: 18px;
+}
+
+.editorialQuote {
+  max-width: 500px;
+  margin: 0 auto 6px;
+  text-align: center;
+}
+
+.editorialQuoteEn {
+  font-size: 14px;
+  font-weight: 200;
+  color: rgba(106, 96, 88, 0.6);
+  font-style: italic;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* ── PRODUCTS ── */
+.productsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── VALUES ── */
+.valuesWrap {
+  background: var(--white);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── INSTAGRAM ── */
+.igTitle {
+  margin-bottom: 22px;
+}
+
+/* ── RESPONSIVE ── */
+@media (min-width: 680px) {
+  .categories {
+    flex-direction: row;
+  }
+
+  .categoryBanner {
+    flex: 1;
+    aspect-ratio: 2 / 3;
+  }
+
+  .productsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

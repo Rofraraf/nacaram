@@ -1,0 +1,131 @@
+.footer {
+  background: var(--dark);
+  padding: 52px 20px 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.brand {
+  grid-column: 1 / -1;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  color: var(--gp);
+  display: block;
+  margin-bottom: 10px;
+  transition: color var(--t-fast);
+}
+
+.logo:hover {
+  color: var(--gl);
+}
+
+.taglineEs {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 3px;
+}
+
+.taglineEn {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 14px;
+}
+
+.origin {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gl);
+  font-weight: 300;
+}
+
+.colTitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 14px;
+  font-weight: 300;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links a {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color var(--t-fast);
+}
+
+.links a:hover {
+  color: var(--gl);
+}
+
+.bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.copy {
+  font-size: 11px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.legal {
+  display: flex;
+  gap: 16px;
+}
+
+.legal a {
+  font-size: 11px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color var(--t-fast);
+}
+
+.legal a:hover {
+  color: var(--g);
+}
+
+@media (min-width: 680px) {
+  .inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+
+  .bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

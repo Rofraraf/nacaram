@@ -1,0 +1,284 @@
+/* app/producto/[slug]/page.module.css */
+
+.breadcrumb {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--gray);
+  border-bottom: 1px solid var(--line2);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.breadcrumb a {
+  color: var(--gray);
+  transition: color var(--t-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--ink);
+}
+
+/* ── PRODUCT LAYOUT ── */
+.product {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+/* ── GALLERY ── */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.mainImage {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #F7F2EA;
+  border: 1px solid var(--line2);
+  cursor: zoom-in;
+}
+
+.mainImage img {
+  transition: transform var(--t-slow);
+}
+
+.mainImage:hover img {
+  transform: scale(1.03);
+}
+
+.zoomBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--t-fast);
+}
+
+.zoomBtn:hover {
+  background: var(--white);
+  border-color: var(--g);
+}
+
+.zoomBtn svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--ink);
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--line2);
+  transition: border-color var(--t-fast);
+  background: #F7F2EA;
+}
+
+.thumb:hover {
+  border-color: var(--gray);
+}
+
+.thumbActive {
+  border-color: var(--ink);
+}
+
+.thumb img {
+  transition: transform var(--t-slow);
+}
+
+.thumb:hover img {
+  transform: scale(1.05);
+}
+
+/* ── INFO ── */
+.info {}
+
+.category {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--g);
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 7vw, 48px);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.05;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--g);
+  margin-bottom: 0;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line2);
+  margin: 24px 0;
+}
+
+.descLabel {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+
+.desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+
+/* Specs */
+.specs {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line2);
+  gap: 16px;
+}
+
+.spec:last-child {
+  border-bottom: none;
+}
+
+.specLabel {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 300;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.specVal {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* Care */
+.care {
+  background: var(--gm);
+  border: 1px solid var(--line);
+  padding: 20px;
+}
+
+.careTitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--g);
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.careText {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+/* Buttons */
+.addBtn {
+  margin-top: 24px;
+}
+
+.addBtnAdded {
+  background: var(--g) !important;
+  color: var(--ink) !important;
+  border-color: var(--g) !important;
+}
+
+.wishlistBtn {
+  margin-top: 10px;
+}
+
+/* Related */
+.related {
+  border-top: 1px solid var(--line);
+}
+
+.relatedTitle {
+  margin-bottom: 28px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── RESPONSIVE ── */
+@media (min-width: 680px) {
+  .product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+    padding: 36px 24px 80px;
+  }
+
+  .gallery {
+    margin-bottom: 0;
+    position: sticky;
+    top: 116px; /* header height */
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
