@@ -8,6 +8,7 @@ import { getHomeData, getCategories, getSiteSettings } from '@/sanity/lib/querie
 import ProductCard from '@/components/product/ProductCard'
 import NewsletterForm from '@/components/ui/NewsletterForm'
 import styles from './page.module.css'
+export const revalidate = 0
 
 export const metadata: Metadata = {
   title: 'NacaRam — Artesanía Canaria · Bolsos Hechos a Mano',

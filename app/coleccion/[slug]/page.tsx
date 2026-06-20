@@ -1,12 +1,14 @@
-
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getProductsByCategory } from '@/data/products'
 import { getSanityProductsByCategory } from '@/sanity/lib/products'
+import { getCategories } from '@/sanity/lib/queries'
 import ProductCard from '@/components/product/ProductCard'
 import styles from './page.module.css'
+
+export const revalidate = 0
 
 interface Props { params: { slug: string } }
 
@@ -42,15 +44,27 @@ export default async function CollectionPage({ params }: Props) {
   const cat = CATEGORY_MAP[params.slug]
   if (!cat) notFound()
 
-  const sanityProducts = await getSanityProductsByCategory(params.slug).catch(() => [])
+  const [sanityProducts, sanityCategories] = await Promise.all([
+    getSanityProductsByCategory(params.slug).catch(() => []),
+    getCategories().catch(() => []),
+  ])
+
   const products = sanityProducts.length > 0
     ? sanityProducts
     : getProductsByCategory(params.slug)
 
+  const sanityCategory = sanityCategories.find(c => c.slug === params.slug)
+  const heroImage = sanityCategory?.imageUrl ?? cat.image
+
   return (
     <>
       <div className={styles.hero}>
-        <Image src={cat.image} alt={cat.name.es} fill priority sizes="100vw" style={{ objectFit: 'cover' }} />
+        <Image
+          src={heroImage}
+          alt={cat.name.es} fill priority sizes="100vw"
+          style={{ objectFit: 'cover' }}
+          unoptimized={heroImage.startsWith('https://')}
+        />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb}>
