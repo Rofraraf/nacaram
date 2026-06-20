@@ -11,6 +11,19 @@ const nextConfig = {
     ],
   },
   transpilePackages: ['next-sanity'],
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+        ],
+      },
+    ]
+  },
   webpack: (config, { dev }) => {
     if (!dev) {
       config.cache = false
