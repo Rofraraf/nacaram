@@ -9,6 +9,7 @@ import ProductCard from '@/components/product/ProductCard'
 import styles from './page.module.css'
 
 export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 interface Props { params: { slug: string } }
 
