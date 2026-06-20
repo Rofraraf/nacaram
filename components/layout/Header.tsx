@@ -72,9 +72,9 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className={styles.logo}>
+          <a href="/" className={styles.logo}>
             NacaRam
-          </Link>
+          </a>
 
           {/* Right: lang + cart */}
           <div className={styles.headerRight}>
