@@ -11,10 +11,16 @@ const nextConfig = {
     ],
   },
   transpilePackages: ['next-sanity'],
+  experimental: {
+    staleTimes: {
+      dynamic: 0,
+      static: 0,
+    },
+  },
   async headers() {
     return [
       {
-        source: '/',
+        source: '/(.*)',
         headers: [
           {
             key: 'Cache-Control',
