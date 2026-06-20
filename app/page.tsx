@@ -8,6 +8,7 @@ import { getHomeData, getCategories, getSiteSettings } from '@/sanity/lib/querie
 import ProductCard from '@/components/product/ProductCard'
 import NewsletterForm from '@/components/ui/NewsletterForm'
 import styles from './page.module.css'
+import RefreshOnFocus from '@/components/ui/RefreshOnFocus'
 export const revalidate = 0
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default async function HomePage() {
 
   return (
     <>
+    <RefreshOnFocus />
       {/* ── ANNOUNCEMENT BANNER ── */}
       {settings?.announcement && (
         <div style={{ background: 'var(--g)', color: 'var(--ink)', textAlign: 'center', padding: '10px 20px', fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: '300' }}>
