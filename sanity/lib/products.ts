@@ -57,7 +57,7 @@ function mapProduct(p: SanityProduct): Product {
 }
 
 export async function getFeaturedSanityProducts(): Promise<Product[]> {
-  const query = `*[_type == "product" ${DATE_FILTER}] | order(_createdAt desc) [0...6] { ${PRODUCT_FIELDS} }`
+  const query = `*[_type == "product" ${DATE_FILTER}] | order(_createdAt desc) [0...8] { ${PRODUCT_FIELDS} }`
   const products = await client.fetch<SanityProduct[]>(query)
   return products.map(mapProduct)
 }

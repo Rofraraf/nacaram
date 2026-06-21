@@ -188,9 +188,9 @@ ul, ol {
 }
 
 .btn-outline {
+   border: 1px solid #ffffff;
+  color: #ffffff;
   background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--ink);
 }
 .btn-outline:hover {
   border-color: var(--g);
@@ -764,5 +764,4 @@ html[data-lang='en'] .lang-es-inline { display: none; }
 .reveal-stagger.revealed > *:nth-child(11) { transition-delay: 1.0s; opacity: 1; transform: translateY(0); }
 .reveal-stagger.revealed > *:nth-child(12) { transition-delay: 1.1s; opacity: 1; transform: translateY(0); }
 
-/* ── CUSTOM CURSOR ── */
-@media (hover: hover) { * { cursor: none !important; } }
+
