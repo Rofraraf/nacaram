@@ -182,16 +182,16 @@ export default async function HomePage() {
 
       {/* ── PRODUCTS ── */}
       <div className="section">
-        <p className="eyebrow"><span className="lang-es">Todas las piezas</span><span className="lang-en">All pieces</span></p>
+        <p className="eyebrow"><span className="lang-es">Recién llegadas</span><span className="lang-en">All pieces</span></p>
         <h2 className={`title-lg ${styles.sectionTitle}`}>
-          <span className="lang-es">Disponibles ahora</span>
-          <span className="lang-en">Available now</span>
+          <span className="lang-es">Novedades</span>
+          <span className="lang-en">New Arrivals</span>
         </h2>
         <p className={`subtitle ${styles.sectionSub}`}>
           <span className="lang-es">Piezas únicas hechas a mano · Available now</span>
           <span className="lang-en">Unique handmade pieces · Disponibles ahora</span>
         </p>
-        <div className={`${styles.productsGrid} reveal-stagger`}>
+        <div className={styles.productsGrid}>
           {featured.map((product) => (
             <ProductCard key={product.id} product={product} lang="es" />
           ))}
