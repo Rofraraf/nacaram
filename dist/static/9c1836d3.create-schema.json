@@ -1,0 +1,831 @@
+[
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "presence",
+                    "constraint": "required"
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "name",
+        "type": "object",
+        "title": "Nombre"
+      },
+      {
+        "options": {
+          "source": "name.es",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Se genera desde el nombre en español. Ej: blanc-sole",
+        "name": "slug",
+        "type": "slug",
+        "title": "URL del producto"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "price",
+        "type": "number",
+        "title": "Precio (€)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Bolsos",
+              "value": "bolsos"
+            },
+            {
+              "title": "Bolsos de Novia",
+              "value": "bolsos-novia"
+            },
+            {
+              "title": "Bolsos de Fiesta",
+              "value": "bolsos-fiesta"
+            },
+            {
+              "title": "Bolsos Tote",
+              "value": "bolsos-tote"
+            },
+            {
+              "title": "Edición Arte",
+              "value": "edicion-arte"
+            },
+            {
+              "title": "Bisutería",
+              "value": "bisuteria"
+            },
+            {
+              "title": "Collares",
+              "value": "collares"
+            },
+            {
+              "title": "Cuellos",
+              "value": "cuellos"
+            },
+            {
+              "title": "Complementos",
+              "value": "complementos"
+            },
+            {
+              "title": "Llaveros",
+              "value": "llaveros"
+            },
+            {
+              "title": "Cinturones",
+              "value": "cinturones"
+            }
+          ]
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "category",
+        "type": "array",
+        "title": "Categorías"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Foto frontal del producto",
+        "name": "mainImage",
+        "type": "image",
+        "title": "Imagen principal"
+      },
+      {
+        "description": "Primera foto = aparece al hacer hover en la home. Añade todas las vistas del producto.",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "gallery",
+        "type": "array",
+        "title": "Galería de imágenes"
+      },
+      {
+        "fields": [
+          {
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "tagline",
+        "type": "object",
+        "title": "Tagline (frase corta)"
+      },
+      {
+        "fields": [
+          {
+            "rows": 4,
+            "name": "es",
+            "type": "text",
+            "title": "Español"
+          },
+          {
+            "rows": 4,
+            "name": "en",
+            "type": "text",
+            "title": "English"
+          }
+        ],
+        "name": "description",
+        "type": "object",
+        "title": "Descripción"
+      },
+      {
+        "fields": [
+          {
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "material",
+        "type": "object"
+      },
+      {
+        "description": "Ej: 24 × 18 × 8 cm",
+        "name": "dimensions",
+        "type": "string",
+        "title": "Dimensiones"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Tenerife, Islas Canarias",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Tenerife, Canary Islands",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "madeIn",
+        "type": "object",
+        "title": "Hecho en"
+      },
+      {
+        "description": "Número de posición (1 = primero). Déjalo vacío para que salga al final.",
+        "name": "order",
+        "type": "number",
+        "title": "Orden en la web"
+      },
+      {
+        "initialValue": true,
+        "description": "Desactiva para ocultar sin borrar",
+        "name": "available",
+        "type": "boolean",
+        "title": "Activo (visible en la web)"
+      },
+      {
+        "initialValue": false,
+        "description": "Aparece en \"Disponibles ahora\" de la portada",
+        "name": "featured",
+        "type": "boolean",
+        "title": "Destacado en la Home"
+      },
+      {
+        "description": "Opcional — dejar vacío para publicar siempre. Útil para San Valentín, Navidad, etc.",
+        "name": "publishFrom",
+        "type": "datetime",
+        "title": "Publicar desde"
+      },
+      {
+        "description": "Opcional — dejar vacío para no tener fecha de fin.",
+        "name": "publishUntil",
+        "type": "datetime",
+        "title": "Publicar hasta"
+      }
+    ],
+    "name": "product",
+    "type": "document",
+    "title": "Productos"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "presence",
+                    "constraint": "required"
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "name",
+        "type": "object",
+        "title": "Nombre"
+      },
+      {
+        "options": {
+          "source": "name.es",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "URL"
+      },
+      {
+        "description": "Texto pequeño encima del nombre. Ej: Novia · Fiesta · Tote · Arte",
+        "fields": [
+          {
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "kicker",
+        "type": "object",
+        "title": "Subtítulo del banner"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Foto que aparece en la home y en la cabecera de la categoría",
+        "name": "image",
+        "type": "image",
+        "title": "Imagen del banner"
+      },
+      {
+        "initialValue": 1,
+        "name": "order",
+        "type": "number",
+        "title": "Orden (1 = primera)"
+      }
+    ],
+    "name": "category",
+    "type": "document",
+    "title": "Categorías"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Foto principal de la portada. Mínimo 1920×1080px recomendado.",
+        "name": "heroImage",
+        "type": "image",
+        "title": "Foto del Hero"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Hecho despacio. Elegido para siempre.",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Made slowly. Chosen forever.",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "heroTitle",
+        "type": "object",
+        "title": "Título principal del Hero"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Made slowly. Chosen forever.",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Hecho despacio. Elegido para siempre.",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "heroSubtitle",
+        "type": "object",
+        "title": "Subtítulo del Hero (línea pequeña)"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Nueva colección · Artesanía canaria",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "New collection · Canarian craftsmanship",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "heroKicker",
+        "type": "object",
+        "title": "Texto pequeño encima del título"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 8
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Selecciona qué productos aparecen en \"Disponibles ahora\". Máximo 8.",
+        "of": [
+          {
+            "to": [
+              {
+                "type": "product"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to productos"
+          }
+        ],
+        "name": "featuredProducts",
+        "type": "array",
+        "title": "Productos destacados"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Artesanía canaria · Slow fashion · Hecho a mano",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Canarian craftsmanship · Slow fashion · Handmade",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "editorialKicker",
+        "type": "object",
+        "title": "Editorial — Texto pequeño superior"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Perfección que no se fabrica.",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Perfection that cannot be made.",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "editorialTitle",
+        "type": "object",
+        "title": "Editorial — Título principal"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "\"La perfección no se fabrica. Se teje, una perla a la vez.\"",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "\"Perfection is not made. It is woven, one bead at a time.\"",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "editorialQuote",
+        "type": "object",
+        "title": "Editorial — Cita"
+      },
+      {
+        "initialValue": [
+          {
+            "number": "01",
+            "title": {
+              "es": "Hecho a mano",
+              "en": "Handmade"
+            },
+            "subtitle": {
+              "es": "Handmade · with love",
+              "en": "Hecho a mano · con amor"
+            },
+            "description": {
+              "es": "Cada pieza tejida perla a perla. Sin máquinas, sin prisa.",
+              "en": "Every piece woven bead by bead. No machines, no rush."
+            }
+          },
+          {
+            "number": "02",
+            "title": {
+              "es": "Única e irrepetible",
+              "en": "Unique"
+            },
+            "subtitle": {
+              "es": "Unique & irreplaceable",
+              "en": "Única e irrepetible"
+            },
+            "description": {
+              "es": "No hay dos bolsos iguales. El tuyo es solo tuyo.",
+              "en": "No two bags are alike. Yours alone."
+            }
+          },
+          {
+            "number": "03",
+            "title": {
+              "es": "Origen canario",
+              "en": "Canarian origin"
+            },
+            "subtitle": {
+              "es": "Canarian origin · Atlantic soul",
+              "en": "Origen canario · Alma atlántica"
+            },
+            "description": {
+              "es": "Del Atlántico a tus manos. Artesanía de las islas.",
+              "en": "From the Atlantic to your hands."
+            }
+          },
+          {
+            "number": "04",
+            "title": {
+              "es": "Slow fashion",
+              "en": "Slow fashion"
+            },
+            "subtitle": {
+              "es": "Slow fashion · for real",
+              "en": "Slow fashion · de verdad"
+            },
+            "description": {
+              "es": "Una pieza, mil horas. Hecha para durar para siempre.",
+              "en": "One piece, a thousand hours. Made to last."
+            }
+          }
+        ],
+        "of": [
+          {
+            "fields": [
+              {
+                "description": "Ej: 01",
+                "name": "number",
+                "type": "string",
+                "title": "Número"
+              },
+              {
+                "fields": [
+                  {
+                    "name": "es",
+                    "type": "string",
+                    "title": "Español"
+                  },
+                  {
+                    "name": "en",
+                    "type": "string",
+                    "title": "English"
+                  }
+                ],
+                "name": "title",
+                "type": "object",
+                "title": "Título"
+              },
+              {
+                "fields": [
+                  {
+                    "name": "es",
+                    "type": "string",
+                    "title": "Español"
+                  },
+                  {
+                    "name": "en",
+                    "type": "string",
+                    "title": "English"
+                  }
+                ],
+                "name": "subtitle",
+                "type": "object",
+                "title": "Subtítulo (pequeño)"
+              },
+              {
+                "fields": [
+                  {
+                    "rows": 2,
+                    "name": "es",
+                    "type": "text",
+                    "title": "Español"
+                  },
+                  {
+                    "rows": 2,
+                    "name": "en",
+                    "type": "text",
+                    "title": "English"
+                  }
+                ],
+                "name": "description",
+                "type": "object",
+                "title": "Descripción"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "values",
+        "type": "array",
+        "title": "Valores (sección 01-02-03-04)"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Síguenos en Instagram · @nacaramia",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Follow us on Instagram · @nacaramia",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "instagramTitle",
+        "type": "object",
+        "title": "Instagram — Título de la sección"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 6
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Las 6 fotos que aparecen en la sección de Instagram. Recomendado: formato cuadrado 1:1.",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "instagramImages",
+        "type": "array",
+        "title": "Instagram — Fotos de la galería"
+      }
+    ],
+    "name": "home",
+    "type": "document",
+    "title": "🏠 Home (Portada)"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": [
+          "HECHO A MANO EN TENERIFE",
+          "PIEZAS ÚNICAS",
+          "ARTESANÍA CANARIA",
+          "NACARAM.COM",
+          "HANDMADE IN TENERIFE",
+          "UNIQUE PIECES",
+          "CANARIAN CRAFTSMANSHIP"
+        ],
+        "description": "Frases que se desplazan en la barra negra de arriba. Añade o elimina las que quieras.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tickerItems",
+        "type": "array",
+        "title": "Ticker (barra negra superior)"
+      },
+      {
+        "initialValue": "info@nacaram.com",
+        "name": "email",
+        "type": "string",
+        "title": "Email de contacto"
+      },
+      {
+        "initialValue": "nacaramia",
+        "description": "Sin @. Solo el nombre de usuario.",
+        "name": "instagram",
+        "type": "string",
+        "title": "Usuario de Instagram"
+      },
+      {
+        "name": "tiktok",
+        "type": "string",
+        "title": "Usuario de TikTok"
+      },
+      {
+        "description": "Número con prefijo internacional. Ej: +34612345678",
+        "name": "whatsapp",
+        "type": "string",
+        "title": "WhatsApp (opcional)"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Hecho despacio. Elegido para siempre.",
+            "name": "es",
+            "type": "string",
+            "title": "Español"
+          },
+          {
+            "initialValue": "Made slowly. Chosen forever.",
+            "name": "en",
+            "type": "string",
+            "title": "English"
+          }
+        ],
+        "name": "footerTagline",
+        "type": "object",
+        "title": "Tagline del footer"
+      },
+      {
+        "initialValue": "Tenerife · Islas Canarias · nacaram.com",
+        "name": "footerOrigin",
+        "type": "string",
+        "title": "Texto de origen en footer"
+      },
+      {
+        "description": "Texto que aparece en el ticker o en la ficha de producto. Ej: Envío gratuito en pedidos +150€",
+        "name": "shippingNotice",
+        "type": "string",
+        "title": "Aviso de envío"
+      },
+      {
+        "description": "Mensaje especial para mostrar (rebajas, lanzamiento, etc.). Déjalo vacío para no mostrar nada.",
+        "name": "announcement",
+        "type": "string",
+        "title": "Anuncio activo"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document",
+    "title": "⚙️ Ajustes globales"
+  },
+  {
+    "fields": [
+      {
+        "readOnly": true,
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "readOnly": true,
+        "name": "subscribedAt",
+        "type": "datetime",
+        "title": "Fecha de suscripción"
+      },
+      {
+        "initialValue": true,
+        "name": "active",
+        "type": "boolean",
+        "title": "Activo"
+      }
+    ],
+    "name": "newsletter",
+    "type": "document",
+    "title": "📧 Newsletter"
+  }
+]
