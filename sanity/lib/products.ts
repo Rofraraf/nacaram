@@ -19,13 +19,14 @@ interface SanityProduct {
   available: boolean
   publishFrom?: string
   publishUntil?: string
+  order?: number
 }
 
 const PRODUCT_FIELDS = `
   _id, name, slug, price, category,
   mainImage, gallery[],
   tagline, description, material, dimensions, madeIn,
-  featured, available, publishFrom, publishUntil
+  featured, available, publishFrom, publishUntil, order
 `
 
 const DATE_FILTER = `
@@ -57,13 +58,13 @@ function mapProduct(p: SanityProduct): Product {
 }
 
 export async function getFeaturedSanityProducts(): Promise<Product[]> {
-  const query = `*[_type == "product" ${DATE_FILTER}] | order(_createdAt desc) [0...8] { ${PRODUCT_FIELDS} }`
+  const query = `*[_type == "product" ${DATE_FILTER}] | order(coalesce(order, 9999) asc, _createdAt desc) [0...10] { ${PRODUCT_FIELDS} }`
   const products = await client.fetch<SanityProduct[]>(query)
   return products.map(mapProduct)
 }
 
 export async function getAllSanityProducts(): Promise<Product[]> {
-  const query = `*[_type == "product" ${DATE_FILTER}] | order(_createdAt desc) { ${PRODUCT_FIELDS} }`
+  const query = `*[_type == "product" ${DATE_FILTER}] | order(coalesce(order, 9999) asc, _createdAt desc) { ${PRODUCT_FIELDS} }`
   const products = await client.fetch<SanityProduct[]>(query)
   return products.map(mapProduct)
 }
@@ -76,13 +77,13 @@ export async function getSanityProductBySlug(slug: string): Promise<Product | nu
 }
 
 export async function getSanityProductsByCategory(category: string): Promise<Product[]> {
-  const query = `*[_type == "product" && $category in category ${DATE_FILTER}] | order(_createdAt desc) { ${PRODUCT_FIELDS} }`
+  const query = `*[_type == "product" && $category in category ${DATE_FILTER}] | order(coalesce(order, 9999) asc, _createdAt desc) { ${PRODUCT_FIELDS} }`
   const products = await client.fetch<SanityProduct[]>(query, { category })
   return products.map(mapProduct)
 }
 
 export async function getRelatedSanityProducts(currentSlug: string, categories: string[]): Promise<Product[]> {
-  const query = `*[_type == "product" && slug.current != $slug && count((category)[@ in $categories]) > 0 ${DATE_FILTER}] | order(_createdAt desc) [0...4] { ${PRODUCT_FIELDS} }`
+  const query = `*[_type == "product" && slug.current != $slug && count((category)[@ in $categories]) > 0 ${DATE_FILTER}] | order(coalesce(order, 9999) asc, _createdAt desc) [0...4] { ${PRODUCT_FIELDS} }`
   const products = await client.fetch<SanityProduct[]>(query, { slug: currentSlug, categories })
   return products.map(mapProduct)
 }

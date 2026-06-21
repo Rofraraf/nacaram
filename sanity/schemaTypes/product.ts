@@ -119,6 +119,15 @@ export const product = defineType({
         { name: 'en', title: 'English', type: 'string', initialValue: 'Tenerife, Canary Islands' },
       ],
     }),
+    
+// ── ORDEN ──
+defineField({
+  name: 'order',
+  title: 'Orden en la web',
+  type: 'number',
+  description: 'Número de posición (1 = primero). Déjalo vacío para que salga al final.',
+}),
+
 
     // ── VISIBILIDAD ──
     defineField({
